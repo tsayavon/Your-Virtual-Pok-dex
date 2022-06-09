@@ -23,9 +23,6 @@ const leftButton = document.querySelector('.left-button');
     //right button
  const rightButton = document.querySelector('.right-button');
 
-
-
-
 //constants and variables
 const TYPES = [
     'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
@@ -34,7 +31,6 @@ const TYPES = [
 ];
 let prevUrl = null;
 let nextUrl = null;
-
 
 //Functions
 const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
@@ -72,31 +68,8 @@ const fetchPokeList = url => {
 });
 };
 
-const handleLeftButtonClick = () => {
-    if (prevUrl) {
-        fetchPokeList(prevUrl);
-    }
-}
-const handleRightButtonClick = () => {
-    if (nextUrl) {
-        fetchPokeList(nextUrl);
-    }
-
-};
-
-const handleListItemClick = (e) => {
-    if (!e.target) return;
-
-    const listItem = e.target;
-    if (!listItem.textContent) return;
-
-    const id = listItem.textContent.split('.')[0];
-    
-
-};
-
-//Get Data for left side (main screen)
-resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
+const fetchPokeData = id => {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(res => res.json())
     .then(data => {
         resetScreen();
@@ -125,8 +98,31 @@ resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
         pokeFrontImage.src = data['sprites']['front_default'] || '';
         pokeBackImage.src = data['sprites']['back_default'] || '';
     });
+}
 
-// get data for right side of screen
+const handleLeftButtonClick = () => {
+    if (prevUrl) {
+        fetchPokeList(prevUrl);
+    }
+}
+const handleRightButtonClick = () => {
+    if (nextUrl) {
+        fetchPokeList(nextUrl);
+    }
+
+};
+
+const handleListItemClick = (e) => {
+    if (!e.target) return;
+
+    const listItem = e.target;
+    if (!listItem.textContent) return;
+
+    const id = listItem.textContent.split('.')[0];
+    fetchPokeData(id);
+    
+
+};
 
 // event listeners
 leftButton.addEventListener('click', handleLeftButtonClick);
