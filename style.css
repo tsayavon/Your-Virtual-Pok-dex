@@ -363,7 +363,9 @@
   .hide {
     display: none;
   }
+
   
+  /* Colors to change background color according to type of pokemon */
   .normal {
     background: #BABAAE;
   }

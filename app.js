@@ -18,21 +18,34 @@ const pokeWeight = document.querySelector('.poke-weight');
 const pokeHeight = document.querySelector('.poke-height');
 
 
+//constants and variables
+const TYPES = [
+    'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
+    'bug', 'ghost', 'steel', 'fire', 'water', 'grass', 'electric',
+    'psychic', 'ice', 'dragon', 'dark', 'fairy'
+];
+
+
+//Functions
+const resetScreen = () => {
+    mainScreen.classList.remove('hide');
+    for (const type of TYPES) {
+        mainScreen.classList.remove(type);
+    }
+};
 
 
 
-console.log(pokeName);
 
 
-resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
+
+resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/3')
     .then(res => res.json())
     .then(data => {
         console.log(data);
-        mainScreen.classList.remove('hide');
-        pokeName.textContent = data['name'];
-        pokeId.textContent = data['id'];
-        pokeWeight.textContent = data['weight'];
-        pokeHeight.textContent = data['height'];
+        
+        
+        resetScreen();
 
         const dataTypes = data['types'];
         const dataFirstType = dataTypes[0];
@@ -46,7 +59,17 @@ resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
             pokeTypeTwo.textContent = '';
         }
 
-        //updating html img src
-        pokeFrontImage.scr = data['sprites']['front_default'] || '';
-        pokeBackImage.scr = data['sprites']['back_default'] || '';
+        mainScreen.classList.add(dataFirstType['type']['name']);
+        
+
+        pokeName.textContent = data['name'];
+        pokeId.textContent = data['id'];
+        pokeWeight.textContent = data['weight'];
+        pokeHeight.textContent = data['height'];
+
+       
+
+        //updating html img src NOT WORKING COME BACK 
+        pokeFrontImage.src = data['sprites']['front_default'] || '';
+        pokeBackImage.src = data['sprites']['back_default'] || '';
     });
