@@ -1,4 +1,5 @@
 // DOM objects
+const mainScreen = document.querySelector('.main-screen');
     //Grab name
 const pokeName = document.querySelector('.poke-name');
     //Grab PokeID
@@ -27,4 +28,25 @@ resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
     .then(res => res.json())
     .then(data => {
         console.log(data);
+        mainScreen.classList.remove('hide');
+        pokeName.textContent = data['name'];
+        pokeId.textContent = data['id'];
+        pokeWeight.textContent = data['weight'];
+        pokeHeight.textContent = data['height'];
+
+        const dataTypes = data['types'];
+        const dataFirstType = dataTypes[0];
+        const dataSecondType = dataTypes[1];
+        pokeTypeOne.textContent = dataFirstType['type']['name'];
+        if (dataSecondType) {
+            pokeTypeTwo.classList.remove('hide');
+            pokeTypeTwo.textContent = dataSecondType['type']['name'];
+        } else {
+            pokeTypeTwo.classList.add('hide');
+            pokeTypeTwo.textContent = '';
+        }
+
+        //updating html img src
+        pokeFrontImage.scr = data['sprites']['front_default'] || '';
+        pokeBackImage.scr = data['sprites']['back_default'] || '';
     });
