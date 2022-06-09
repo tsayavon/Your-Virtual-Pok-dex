@@ -28,6 +28,8 @@ As a user:
 
 ![Sketch](./assets/sketch.png)
 
+- ^ Wireframe Sketch
+
 # Getting Started
 
 [Click here](URL) to play
