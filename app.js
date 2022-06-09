@@ -27,6 +27,8 @@ const TYPES = [
 
 
 //Functions
+const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
+
 const resetScreen = () => {
     mainScreen.classList.remove('hide');
     for (const type of TYPES) {
@@ -39,21 +41,18 @@ const resetScreen = () => {
 
 
 
-resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/3')
+resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
     .then(res => res.json())
     .then(data => {
-        console.log(data);
-        
-        
         resetScreen();
 
         const dataTypes = data['types'];
         const dataFirstType = dataTypes[0];
         const dataSecondType = dataTypes[1];
-        pokeTypeOne.textContent = dataFirstType['type']['name'];
+        pokeTypeOne.textContent = capitalize(dataFirstType['type']['name']);
         if (dataSecondType) {
             pokeTypeTwo.classList.remove('hide');
-            pokeTypeTwo.textContent = dataSecondType['type']['name'];
+            pokeTypeTwo.textContent = capitalize(dataSecondType['type']['name']);
         } else {
             pokeTypeTwo.classList.add('hide');
             pokeTypeTwo.textContent = '';
@@ -62,10 +61,10 @@ resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/3')
         mainScreen.classList.add(dataFirstType['type']['name']);
         
 
-        pokeName.textContent = data['name'];
-        pokeId.textContent = data['id'];
-        pokeWeight.textContent = data['weight'];
-        pokeHeight.textContent = data['height'];
+        pokeName.textContent = capitalize(data['name']);
+        pokeId.textContent = '#' + data['id'].toString().padStart(3,'0');
+        pokeWeight.textContent = data['weight'] + 'kg';
+        pokeHeight.textContent = data['height'] + 'm';
 
        
 
