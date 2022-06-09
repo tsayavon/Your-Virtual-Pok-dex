@@ -16,6 +16,14 @@ const pokeTypeTwo = document.querySelector('.poke-type-two');
 const pokeWeight = document.querySelector('.poke-weight');
     //Height
 const pokeHeight = document.querySelector('.poke-height');
+    //List items
+const pokeListItems = document.querySelectorAll('.list-item');
+    //left button
+const leftButton = document.querySelector('.left-button');
+    //right button
+ const rightButton = document.querySelector('.right-button');
+
+
 
 
 //constants and variables
@@ -24,6 +32,8 @@ const TYPES = [
     'bug', 'ghost', 'steel', 'fire', 'water', 'grass', 'electric',
     'psychic', 'ice', 'dragon', 'dark', 'fairy'
 ];
+let prevUrl = null;
+let nextUrl = null;
 
 
 //Functions
@@ -36,11 +46,56 @@ const resetScreen = () => {
     }
 };
 
+const fetchPokeList = url => {
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        const { results, previous, next } = data;
+        prevUrl = previous;
+        nextUrl = next;
 
+        for (let i = 0; i < pokeListItems.length ; i++) {
+            const pokeListItem = pokeListItems[i];
+            const resultData = results[i];
+            
 
+            if (resultData) {
+                const { name, url } = resultData;
+                const urlArray = url.split('/');
+                const id = urlArray[urlArray.length - 2];
+                //console.log(urlArray);
+                pokeListItem.textContent = id + '. ' + capitalize(name);
+            } else {
+                pokeListItem.textContent = '';
+            }
+        }
+});
+};
 
+const handleLeftButtonClick = () => {
+    if (prevUrl) {
+        fetchPokeList(prevUrl);
+    }
+}
+const handleRightButtonClick = () => {
+    if (nextUrl) {
+        fetchPokeList(nextUrl);
+    }
 
+};
 
+const handleListItemClick = (e) => {
+    if (!e.target) return;
+
+    const listItem = e.target;
+    if (!listItem.textContent) return;
+
+    const id = listItem.textContent.split('.')[0];
+    
+
+};
+
+//Get Data for left side (main screen)
 resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
     .then(res => res.json())
     .then(data => {
@@ -66,9 +121,19 @@ resultFromFetch = fetch('https://pokeapi.co/api/v2/pokemon/1')
         pokeWeight.textContent = data['weight'] + 'kg';
         pokeHeight.textContent = data['height'] + 'm';
 
-       
-
-        //updating html img src NOT WORKING COME BACK 
+       //updating html img src NOT WORKING COME BACK 
         pokeFrontImage.src = data['sprites']['front_default'] || '';
         pokeBackImage.src = data['sprites']['back_default'] || '';
     });
+
+// get data for right side of screen
+
+// event listeners
+leftButton.addEventListener('click', handleLeftButtonClick);
+rightButton.addEventListener('click', handleRightButtonClick);
+for (const pokeListItem of pokeListItems) {
+    pokeListItem.addEventListener('click', handleListItemClick);
+}
+
+//start app
+fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
