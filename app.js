@@ -21,7 +21,28 @@ const pokeListItems = document.querySelectorAll('.list-item');
     //left button
 const leftButton = document.querySelector('.left-button');
     //right button
- const rightButton = document.querySelector('.right-button');
+const rightButton = document.querySelector('.right-button');
+// --------------------------------------------------------- //
+    //top controller's d pad
+const topDButton = document.querySelector('.d-pad__cell top');
+    //left controller's d pad
+const leftDButton = document.querySelector('.d-pad__cell left');
+    //right controller's d pad
+const rightDButton = document.querySelector('.d-pad__cell right');
+    //bottom controller's d pad
+const bottomDButton = document.querySelector('.d-pad__cell bottom');
+    // B Button
+const bButton = document.querySelector('.buttons__buttonB');
+    // A button
+const aButton = document.querySelector('buttons__buttonA');
+
+
+
+
+
+
+
+
 
 //constants and variables
 const TYPES = [
@@ -124,17 +145,23 @@ const handleListItemClick = (e) => {
 
 };
 
+
+
+
+
+
+
 // event listeners
 leftButton.addEventListener('click', handleLeftButtonClick);
 rightButton.addEventListener('click', handleRightButtonClick);
 for (const pokeListItem of pokeListItems) {
     pokeListItem.addEventListener('click', handleListItemClick);
-}
+};
+
+
 
 //start app
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
 
-// Audio
-// let audio = document.getElementById('audio');
-//   audio.volume = 0.1;
+
 

@@ -232,7 +232,21 @@
     width: 100px;
   }
   
-  .buttons__button {
+  /* .buttons__button {
+    align-items: center;
+    background: black;
+    border-radius: 50%;
+    border: 1px solid dimgrey;
+    box-shadow: 0 0 2px 2px rgba(0,0,0, .3);
+    color: rgba(255,255,255,.75);
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    width: 35px;
+  } */
+  
+  .buttons__buttonB:first-child {
+    margin-top: 5px;
     align-items: center;
     background: black;
     border-radius: 50%;
@@ -245,12 +259,18 @@
     width: 35px;
   }
   
-  .buttons__button:first-child {
-    margin-top: 5px;
-  }
-  
-  .buttons__button:last-child {
+  .buttons__buttonA:last-child {
      margin-top: -5px;
+     align-items: center;
+     background: black;
+     border-radius: 50%;
+     border: 1px solid dimgrey;
+     box-shadow: 0 0 2px 2px rgba(0,0,0, .3);
+     color: rgba(255,255,255,.75);
+     display: flex;
+     height: 35px;
+     justify-content: center;
+     width: 35px;
    }
   
   
