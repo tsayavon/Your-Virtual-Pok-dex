@@ -36,10 +36,10 @@ As a user:
 
 # Future Enhancements
 
-- Add theme song playing in the background
+- Add theme song playing in the background [✔]
 
 - Voice prompts
 
 - Get the left screen buttons to work
 
-- Add background image
+- Add background image [✔]
