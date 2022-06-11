@@ -4,18 +4,26 @@
     padding: 0;
   }
   
+
   body {
     display: flex;
     font-family: sans-serif;
     justify-content: center;
+    background-image: url('./assets/PokeRoute2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
   }
   
+
   .pokedex {
     align-items: flex-end;
     display: flex;
     height: 500px;
     margin: 50px;
     width: 800px;
+    justify-content: center;
   }
   
   .left-container,
@@ -436,4 +444,10 @@
   
   .fairy {
     background: #F9AEFF;
+  }
+
+  audio {
+  bottom: 190px; 
+  position: fixed; 
+  
   }

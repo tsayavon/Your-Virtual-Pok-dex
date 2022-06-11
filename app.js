@@ -133,3 +133,8 @@ for (const pokeListItem of pokeListItems) {
 
 //start app
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
+
+// Audio
+// let audio = document.getElementById('audio');
+//   audio.volume = 0.1;
+
