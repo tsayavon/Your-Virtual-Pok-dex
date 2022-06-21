@@ -105,18 +105,23 @@
         </div>
       </div>
     </section>
+
+
+    <audio autoplay loop id="bgAudio">
+      <source src="./assets/Pokemon-Theme-Song.mp3">
+    </audio> 
+    <script>
+      let audio = document.getElementById("bgAudio");
+      audio.volume = 0.05;
+    </script>
     <script src="app.js"></script>
 
 
 
-    <audio autoplay id="bgAudio">
-      <source src="./assets/Pokemon-Theme-Song.mp3" type="audio/mpeg">
-    </audio>
     
-    <script>
-      let audio = document.getElementById("bgAudio");
-      audio.volume = 0.02;
-    </script>
+    
+     
+ 
     
 </body>
 
