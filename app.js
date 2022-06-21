@@ -164,4 +164,5 @@ for (const pokeListItem of pokeListItems) {
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
 
 
-
+// let audio = document.getElementById("bgAudio");
+//     audio.volume = 0.05;
