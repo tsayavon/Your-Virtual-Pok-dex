@@ -32,7 +32,7 @@ As a user:
 
 # Getting Started
 
-[Click here](URL) to play
+[Click here](https://darling-cactus-580412.netlify.app/) to play
 
 # Future Enhancements
 
